@@ -1,0 +1,13 @@
+select "name" as Company_Name, 
+    SUBSTR(ts, 1, 10) as Date, 
+    max("volatility") as Highest_Volatility,
+    avg("volatility") as Average_Volatility, 
+    min("volatility") as Lowest_Volatility
+FROM project3_bucket_kinesis
+WHERE SUBSTR(ts, 1, 10) != '2023-05-16'
+GROUP BY "name", SUBSTR(ts, 1, 10)
+ORDER BY "name" ASC, SUBSTR(ts, 1, 10)
+
+
+
+
